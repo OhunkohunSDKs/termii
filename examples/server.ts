@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import { TermiiSdk } from './resources/services';
-import { TermiiConfig } from './types/config';
+import { examples } from '.';
 
 dotenv.config();
 const app = express();
@@ -15,23 +14,8 @@ app.get('/', async (req, res) => {
     
     output = {message: `Server running...`};
 
-    //sdk usage;
-
-    //configure sdk;
-    const config: TermiiConfig = {
-        api_key: process.env.API_KEY!,
-        base_url: process.env.BASE_URL!,
-    };
-    const sdk = await TermiiSdk(config);
-
-    //example: send sms;
-    output = await sdk.sms.send({
-        type: 'plain',
-        channel: 'dnd',
-        from: process.env.SEND_SMS_FROM!,
-        to: process.env.SEND_SMS_TO!,
-        sms: `Hello, just testing sdk`,
-    });
+    //run an example;
+    output = await examples.messaging.sendSms();
 
     res.status(200).json(output);
 });

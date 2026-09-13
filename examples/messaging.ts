@@ -1,0 +1,27 @@
+import { Termii, TermiiConfig } from "../src";
+
+export const messagingExamples = {
+    sendSms: async () => {
+        let output;
+        
+        //usage;
+    
+        //configure;
+        const config: TermiiConfig = {
+            api_key: process.env.API_KEY!,
+            base_url: process.env.BASE_URL!,
+        };
+        const client = await Termii(config);
+    
+        //example: send sms;
+        output = await client.sms.send({
+            type: 'plain',
+            channel: 'dnd',
+            from: process.env.SEND_SMS_FROM!,
+            to: process.env.SEND_SMS_TO!,
+            sms: `Hello, just testing sdk`,
+        });
+
+        return output;
+    },
+};

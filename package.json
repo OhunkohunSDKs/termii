@@ -1,15 +1,27 @@
 {
   "name": "@ohunkohun/termii-sdk",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TypeScript SDK for the Termii API",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch examples/server.ts",
     "build": "tsc",
     "types:watch": "npx tsc --noEmit --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["termii", "sdk", "typescript", "javascript", "node", "nodejs", "node.js"],
+  "author": "Ohunkóhun",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+      ".": {
+          "types": "./dist/index.d.ts",
+          "import": "./dist/index.js"
+      }
+  },
+  "files": [
+      "dist"
+  ],
   "dependencies": {
     "axios": "^1.20.0"
   },

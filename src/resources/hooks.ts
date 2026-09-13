@@ -6,7 +6,7 @@ export const useTryCatch = () => {
                 return await callback();
             }
             catch(err){
-                console.log('--tryCatchWrapper', err);
+                // console.log('--tryCatchWrapper', err);
                 if(onErrorCaught) return await onErrorCaught?.(err)
             }
         },
