@@ -1,7 +1,10 @@
 import { create } from "axios";
 import { ApiErrorResponse } from "../types/api-response.js";
 import { TermiiConfig } from "../types/config.js";
-import { SendSmsBody, SmsResponse } from "../types/messaging.js";
+import { SendEmailTemplateBody, SendEmailTemplateResponse } from "../types/email.js";
+import { ListSenderIdParams, ListSenderIdResponse, RequestSenderIdBody, RequestSenderIdResponse } from "../types/sender-id.js";
+import { BulkSmsBody, SendSmsBody, SmsResponse } from "../types/sms.js";
+import { SendWhatsAppTemplateBody } from "../types/whatsapp.js";
 import { useTryCatch } from "./hooks.js";
 
 export const Termii = (config: TermiiConfig) => {
@@ -12,17 +15,33 @@ export const Termii = (config: TermiiConfig) => {
             "Content-Type": "application/json",
         },
     });
+
+    const callApi = async <T> (method: 'post' | 'get', urlPath: string, data: Record<string, any> | undefined) => {
+        return await trycatch.wrap<T | ApiErrorResponse>(async () => {
+            const resp = await (
+                method === 'post' ? req.post(urlPath, {api_key: config.api_key, ...data}) :
+                req.get(urlPath, {params: {api_key: config.api_key, ...data}})
+            );
+            return resp?.data;
+        }, (error) => {
+            return error?.response?.data;
+        });
+    };
     
     const handles = {
+        sender_id: {
+            list: async (query?: ListSenderIdParams) => await callApi<ListSenderIdResponse>('get', `/api/sender-id`, query),
+            request: async (body: RequestSenderIdBody) => await callApi<RequestSenderIdResponse>('post', `/api/sender-id/request`, body),
+        },
         sms: {
-            send: async (body: SendSmsBody) => {
-                return await trycatch.wrap<SmsResponse | ApiErrorResponse>(async () => {
-                    const resp = await req.post(`/api/sms/send`, {api_key: config.api_key, ...body});
-                    return resp?.data;
-                }, (error) => {
-                    return error?.response?.data;
-                });
-            },
+            send: async (body: SendSmsBody) => await callApi<SmsResponse>('post', `/api/sms/send`, body),
+            send_bulk: async (body: BulkSmsBody) => await callApi<SmsResponse>('post', `/api/sms/send/bulk`, body),
+        },
+        email_template: {
+            send: async (body: SendEmailTemplateBody) => await callApi<SendEmailTemplateResponse>('post', `/api/templates/send-email`, body),
+        },
+        whatsapp_template: {
+            send: async (body: SendWhatsAppTemplateBody) => await callApi<RequestSenderIdResponse>('post', `/api/send/template${Object.keys(body.media || {}).length ? `/media` : ``}`, body),
         },
     };
 

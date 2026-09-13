@@ -1,4 +1,3 @@
-
 /**
  * Error response returned by the API.
  */

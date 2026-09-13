@@ -1,4 +1,3 @@
-
 export interface SmsRecipient {
     /**
      * Destination phone number(s) in international format.
