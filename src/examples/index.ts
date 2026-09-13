@@ -1,4 +1,4 @@
-import { messagingExamples } from "./messaging";
+import { messagingExamples } from "./messaging.js";
 
 export const examples = {
     messaging: messagingExamples,

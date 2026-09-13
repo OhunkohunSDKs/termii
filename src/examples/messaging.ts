@@ -1,4 +1,4 @@
-import { Termii, TermiiConfig } from "../src";
+import { Termii, TermiiConfig } from "../index.js";
 
 export const messagingExamples = {
     sendSms: async () => {
