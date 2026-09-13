@@ -16,15 +16,19 @@ export const Termii = (config: TermiiConfig) => {
         },
     });
 
+    type ApiResult<T> =
+    | { success: T; failure?: never }
+    | { success?: never; failure: ApiErrorResponse };
+
     const callApi = async <T> (method: 'post' | 'get', urlPath: string, data: Record<string, any> | undefined) => {
-        return await trycatch.wrap<T | ApiErrorResponse>(async () => {
+        return await trycatch.wrap<ApiResult<T>>(async () => {
             const resp = await (
                 method === 'post' ? req.post(urlPath, {api_key: config.api_key, ...data}) :
                 req.get(urlPath, {params: {api_key: config.api_key, ...data}})
             );
-            return resp?.data;
+            return {success: resp?.data ?? true};
         }, (error) => {
-            return error?.response?.data;
+            return {failure: error?.response?.data};
         });
     };
     

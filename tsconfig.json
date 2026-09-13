@@ -17,13 +17,14 @@
 
     "esModuleInterop": true,
   },
-    "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "examples",
-        "tests"
-    ]
+  "types": ["node"],
+  "include": [
+      "src/**/*.ts"
+  ],
+  "exclude": [
+      "node_modules",
+      "dist",
+      "examples",
+      "tests"
+  ]
 }

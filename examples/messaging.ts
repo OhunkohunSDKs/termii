@@ -22,6 +22,13 @@ export const messagingExamples = {
             sms: `Hello, just testing sdk`,
         });
 
+        if(output?.success){
+            //the response from successful endpoint call;
+        }
+        else {
+            //the response from failed endpoint call;
+        }
+
         return output;
     },
 };
