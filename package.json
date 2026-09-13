@@ -8,6 +8,7 @@
     "types:watch": "npx tsc --noEmit --watch",
     "pack:dry": "npm pack --dry-run",
     "pack": "npm pack",
+    "patch": "npm version patch",
     "publish": "npm publish --access public"
   },
   "keywords": [
