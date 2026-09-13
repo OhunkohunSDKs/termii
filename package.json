@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "tsx watch examples/server.ts",
     "build": "tsc",
-    "types:watch": "npx tsc --noEmit --watch"
+    "types:watch": "npx tsc --noEmit --watch",
+    "pack:dry": "npm pack --dry-run",
+    "pack": "npm pack"
   },
   "keywords": ["termii", "sdk", "typescript", "javascript", "node", "nodejs", "node.js"],
   "author": "Ohunkóhun",

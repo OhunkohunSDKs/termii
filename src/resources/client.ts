@@ -4,7 +4,7 @@ import { TermiiConfig } from "../types/config.js";
 import { SendSmsBody, SmsResponse } from "../types/messaging.js";
 import { useTryCatch } from "./hooks.js";
 
-export const Termii = async (config: TermiiConfig) => {
+export const Termii = (config: TermiiConfig) => {
     const trycatch = useTryCatch();
     const req = create({
         baseURL: config.base_url,

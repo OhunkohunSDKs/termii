@@ -11,7 +11,7 @@ export const messagingExamples = {
             api_key: process.env.API_KEY!,
             base_url: process.env.BASE_URL!,
         };
-        const client = await Termii(config);
+        const client = Termii(config);
     
         //example: send sms;
         output = await client.sms.send({
