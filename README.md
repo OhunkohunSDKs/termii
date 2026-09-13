@@ -2,6 +2,10 @@
 
 A TypeScript/Node.js SDK for interacting with the [Termii](https://developers.termii.com/) API.
 
+## Coverage
+
+This SDK currently supports Termii's messaging APIs, including SMS, bulk messaging, WhatsApp messaging/templates, Sender ID management, and email notifications.
+
 ## Installation
 
 You can install the published npm package directly:
@@ -59,7 +63,7 @@ The compiled package will be generated in the `dist` directory.
 
 There are two ways to test the SDK after cloning the repository.
 
-### Option 1: Use the source directly
+### Use the source directly
 
 Some examples and development utilities in this repository are intended to run locally.
 
@@ -82,7 +86,7 @@ const config = {
 };
 ```
 
-### Option 2: Test the SDK as an installed npm package
+### Test the SDK as an installed npm package
 
 If you want to test the SDK exactly as a consumer would, you can install the published npm package instead of working directly with the source files.
 
