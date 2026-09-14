@@ -1,13 +1,13 @@
 
-export const useTryCatch = () => {
+export const useTryCatch = (debug?: boolean) => {
     const handles = {
          wrap: async <T>(callback: () => Promise<T> | T, onErrorCaught?: (err?: any) => Promise<T> | T): Promise<T | undefined> => {
             try {
                 return await callback();
             }
             catch(err){
-                // console.log('--tryCatchWrapper', err);
-                if(onErrorCaught) return await onErrorCaught?.(err)
+                if(debug) console.log('debug::useTryCatch.wrap', err);
+                return await onErrorCaught?.(err);
             }
         },
     };

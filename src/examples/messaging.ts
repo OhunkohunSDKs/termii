@@ -10,6 +10,7 @@ export const messagingExamples = {
         const config: TermiiConfig = {
             api_key: process.env.API_KEY!,
             base_url: process.env.BASE_URL!,
+            debug: 'error',
         };
         const client = Termii(config);
     

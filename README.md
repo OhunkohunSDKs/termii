@@ -22,6 +22,7 @@ import { Termii } from "@ohunkohun/termii-sdk";
 const client = Termii({
     api_key: "YOUR_API_KEY",
     base_url: "https://BASE_URL",
+    debug: "error", //only supply this if you want logs when an error is caught;
 });
 ```
 
