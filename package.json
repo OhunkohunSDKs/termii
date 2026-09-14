@@ -4,7 +4,7 @@
   "description": "A TypeScript SDK for the Termii API",
   "scripts": {
     "dev": "tsx watch src/examples/server.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "types:watch": "npx tsc --noEmit --watch",
     "pack:dry": "npm pack --dry-run",
     "pack": "npm pack",

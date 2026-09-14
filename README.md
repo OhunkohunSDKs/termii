@@ -35,6 +35,13 @@ const response = await client.sms.send({
     channel: "generic",
     type: "plain",
 });
+
+if(response.success){
+    console.log(response.success); //this is the successful response;
+}
+else if(response.failure){
+    console.log(response.failure); //this is the failure response;
+}
 ```
 
 > Replace the package name and API configuration with the values appropriate for your environment.
