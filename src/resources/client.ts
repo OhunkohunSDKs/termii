@@ -35,7 +35,8 @@ export const Termii = (config: TermiiConfig) => {
             return resp;
         });
 
-        return resp ?? {failure: {error: `SDK::API_REQUEST_FAILED`, message: `API request could not be completed`, status: 500}};
+        const defaultFailure: ApiResult<ApiErrorResponse> = {failure: {error: `SDK::API_REQUEST_FAILED`, message: `API request could not be completed`, status: 500}};
+        return resp ?? defaultFailure;
     };
     
     const handles = {
