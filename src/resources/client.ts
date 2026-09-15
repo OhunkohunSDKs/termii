@@ -4,7 +4,7 @@ import { TermiiConfig } from "../types/config.js";
 import { SendEmailTemplateBody, SendEmailTemplateResponse } from "../types/email.js";
 import { ListSenderIdParams, ListSenderIdResponse, RequestSenderIdBody, RequestSenderIdResponse } from "../types/sender-id.js";
 import { BulkSmsBody, SendSmsBody, SmsResponse } from "../types/sms.js";
-import { SendWhatsAppTemplateBody } from "../types/whatsapp.js";
+import { SendWhatsAppTemplateBody, SendWhatsAppTemplateResponse } from "../types/whatsapp.js";
 import { useAxiosError, useTryCatch } from "./hooks.js";
 
 export const Termii = (config: TermiiConfig) => {
@@ -51,7 +51,7 @@ export const Termii = (config: TermiiConfig) => {
             send: async (body: SendEmailTemplateBody) => await callApi<SendEmailTemplateResponse>('post', `/api/templates/send-email`, body),
         },
         whatsapp_template: {
-            send: async (body: SendWhatsAppTemplateBody) => await callApi<RequestSenderIdResponse>('post', `/api/send/template${Object.keys(body.media || {}).length ? `/media` : ``}`, body),
+            send: async (body: SendWhatsAppTemplateBody) => await callApi<SendWhatsAppTemplateResponse>('post', `/api/send/template${Object.keys(body.media || {}).length ? `/media` : ``}`, body),
         },
     };
 
