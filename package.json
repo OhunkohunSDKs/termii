@@ -1,6 +1,6 @@
 {
   "name": "@ohunkohun/termii-sdk",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A TypeScript SDK for the Termii API",
   "scripts": {
     "dev": "tsx watch src/examples/server.ts",
