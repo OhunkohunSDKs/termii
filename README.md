@@ -203,7 +203,7 @@ If you want to **contribute to, modify, or inspect the SDK source code**, clone 
 
 ```bash
 git clone https://github.com/OhunkohunSDKs/termii-sdk
-cd <repository-folder>
+cd termii-sdk
 npm install
 ```
 
