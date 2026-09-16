@@ -202,7 +202,7 @@ npm install @ohunkohun/termii-sdk
 If you want to **contribute to, modify, or inspect the SDK source code**, clone this repository and install its dependencies:
 
 ```bash
-git clone https://github.com/ohunkohun/termii-sdk
+git clone https://github.com/OhunkohunSDKs/termii-sdk
 cd <repository-folder>
 npm install
 ```
